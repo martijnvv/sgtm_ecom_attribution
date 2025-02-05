@@ -1,6 +1,6 @@
 # sgtm e-commere attribution
 
-Based on (https://github.com/gtm-templates-knowit-experience/sgtm-ga4-ecom-item-list-promo-attribution)[GA4 - Item List & Promotion Attribution - SGTM Variable (Server)]
+Based on [GA4 - Item List & Promotion Attribution - SGTM Variable (Server)](https://github.com/gtm-templates-knowit-experience/sgtm-ga4-ecom-item-list-promo-attribution)
 
 # Steps to configure
 
