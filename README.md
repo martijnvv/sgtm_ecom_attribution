@@ -7,20 +7,26 @@ Based on [GA4 - Item List & Promotion Attribution - SGTM Variable (Server)](http
 ## Google Cloud, Firestore & Cloud Functions Setup
 If you want an easier understanding of cost, it’s recommended to create a new Google Cloud Project for the Firestore setup.
 
+### Service account
+
+* Create a service account
+* Grant it the correct rights by running the bash script in the file in this folder
+
+#### Using a different project for Firestore than for GTMSS
+Grant the service account a Cloud Datastore User role to give SGTM access to the Firestore project.
+
+If you are running Firestore in a different Google Cloud Project than Server-side GTM, you must add the SGTM service account to the Firestore project via IAM.
+
+* If Server-side GTM is running on App Engine, add the Server-side GTM App Engine default service account to the Firestore project.
+* If Server-side GTM is running on Cloud Run, add the Server-side GTM Compute Engine default service account to the Firestore project.
+
 ### Firestore Setup
 * Select a Cloud Firestore mode
   * Select Native Mode
 * Choose where to store your data
   * Create Database
-  
-If you are running Firestore in a different Google Cloud Project than Server-side GTM, you must add the SGTM service account to the Firestore project via IAM.
-
-Grant the service account a Cloud Datastore User role to give SGTM access to the Firestore project.
-
-* If Server-side GTM is running on App Engine, add the Server-side GTM App Engine default service account to the Firestore project.
-* If Server-side GTM is running on Cloud Run, add the Server-side GTM Compute Engine default service account to the Firestore project.
-
-### Delete outdated documents in Firestore
+ 
+#### Delete outdated documents in Firestore
 Use time-to-live (TTL) policies to automatically delete outdated documents.
 In Firestore, go to Time to live (TTL).
 
