@@ -103,4 +103,4 @@ Cloud Functions setup is now completed.
 * change the google_cloud_project_id variable to the correct project ID
 * update the GA4 tag
 
-![update GA4 tag](./images/update_ga4_tag.png)
+![update GA4 tag](./update_ga4_tag.png)
