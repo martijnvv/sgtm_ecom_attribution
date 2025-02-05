@@ -10,7 +10,7 @@ If you want an easier understanding of cost, it’s recommended to create a new 
 ### Service account
 
 * Create a service account
-* Grant it the correct rights by running the bash script in the file in this folder
+* Grant it the correct rights by running the bash script in the file in this folder - make sure to update the PROJECT_ID and SERVICE_ACCOUNT_NAME fields in the bash before running it
 
 #### Using a different project for Firestore than for GTMSS
 Grant the service account a Cloud Datastore User role to give SGTM access to the Firestore project.
