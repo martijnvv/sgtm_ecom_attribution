@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Set variables (Update these before running)
+PROJECT_ID="kruidvat-nl"
+SERVICE_ACCOUNT_NAME="kruidvat-183207"  # Without @PROJECT_ID.iam.gserviceaccount.com
+
+# Construct full service account email
+SERVICE_ACCOUNT="${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
+CUSTOM_ROLE_ID="DigitalDataQualityManager"
+
+echo "🔧 Setting up IAM roles and BigQuery resources for $SERVICE_ACCOUNT in project $PROJECT_ID..."
+
+# Enable required APIs
+gcloud services enable iam.googleapis.com firestore.googleapis.com bigquery.googleapis.com --project=$PROJECT_ID
+
+# Create a custom IAM role with required Firestore permissions
+gcloud iam roles create $CUSTOM_ROLE_ID \
+  --project=$PROJECT_ID \
+  --title="Digital Data Quality Manager" \
+  --description="All access required for data quality project" \
+  --permissions="datastore.databases.get,datastore.entities.get,datastore.entities.list,datastore.entities.create,datastore.entities.update" \
+  --stage="GA" || echo "ℹ️ Custom role may already exist, proceeding..."
+
+# Assign the custom Firestore role to the service account
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:${SERVICE_ACCOUNT}" \
+  --role="projects/${PROJECT_ID}/roles/${CUSTOM_ROLE_ID}"
+
+# Assign BigQuery Admin role
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:${SERVICE_ACCOUNT}" \
+  --role="roles/bigquery.admin"
+
+# Assign Cloud Functions Admin role
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:${SERVICE_ACCOUNT}" \
+  --role="roles/cloudfunctions.admin"
+
+echo "✅ IAM permissions successfully assigned."
+
