@@ -9,9 +9,9 @@ If you want an easier understanding of cost, it’s recommended to create a new 
 
 ### Firestore Setup
 * Select a Cloud Firestore mode
-** Select Native Mode
+  * Select Native Mode
 * Choose where to store your data
-** Create Database
+  * Create Database
   
 If you are running Firestore in a different Google Cloud Project than Server-side GTM, you must add the SGTM service account to the Firestore project via IAM.
 
@@ -37,23 +37,26 @@ We need to create 2 functions; create & update. These functions will listen to c
 
 Configuration
 * Basics
-** Environment: 1st gen
-** Function name: ga4-int_attribution-date-time_create
-** Region: choose a region close to or the same as Firestore
-** Trigger type: Cloud Firestore
-** Event type: create
-** Document path: ecommerce/{docId}
+  * Environment: 1st gen
+  * Function name: ga4-int_attribution-date-time_create
+  * Region: choose a region close to or the same as Firestore
+  * Trigger type: Cloud Firestore
+  * Event type: create
+  * Document path: ecommerce/{docId}
 * Runtime
-** Memory allocated: 256 MB (128 MB may also work)
-** Other settings as is
+  * Memory allocated: 256 MB (128 MB may also work)
+  * Other settings as is
 * Connections
-** Allow internal traffic only
+  * Allow internal traffic only
 
 Code
-Runtime: Node.js (latest version)
-Source code: Inline Editor
-Entry point: makeDateTime
+* Runtime: Node.js (latest version)
+* Source code: Inline Editor
+* Entry point: makeDateTime
+  
 index.js
+
+```
 const Firestore = require('@google-cloud/firestore');
 const firestore = new Firestore({
   projectId: process.env.GOOGLE_CLOUD_PROJECT
@@ -72,8 +75,10 @@ exports.makeDateTime = event => {
     });
   }
 };
+```
 The reason for setting TTL to 7 days from now is to reduce TTL deletes. If we set TTL today, and the user comes back in a couple of days, TTL deletes will be done twice for this user.
 
+```
 package.json
 {
   "name": "sample-firestore",
@@ -83,6 +88,7 @@ package.json
    "firebase-functions": "4.1.0"
 }
 }
+```
 
 ### Deploy function.
 
