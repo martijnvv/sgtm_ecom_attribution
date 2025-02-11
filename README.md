@@ -23,8 +23,6 @@ If you are running Firestore in a different Google Cloud Project than Server-sid
 ### Firestore Setup
 * Select a Cloud Firestore mode
   * Select Native Mode
-* Choose where to store your data
-  * Create Database
  
 #### Delete outdated documents in Firestore
 Use time-to-live (TTL) policies to automatically delete outdated documents.
