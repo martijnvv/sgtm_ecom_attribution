@@ -82,8 +82,9 @@ exports.makeDateTime = event => {
 ```
 The reason for setting TTL to 7 days from now is to reduce TTL deletes. If we set TTL today, and the user comes back in a couple of days, TTL deletes will be done twice for this user.
 
+__package.json__
+
 ```
-package.json
 {
   "name": "sample-firestore",
   "version": "0.0.1",
