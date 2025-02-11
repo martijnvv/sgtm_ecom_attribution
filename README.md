@@ -39,7 +39,7 @@ To be able to use TTL, the TTL field must be of type Date and time. At the time 
 #### Create function
 We need to create 2 functions; create & update. These functions will listen to changes in Firestore, and will take a Timestamp set by SGTM in a unix format (number), and rewrite that number to Date and time.
 
-Configuration
+__Configuration__
 * Basics
   * Environment: 1st gen
   * Function name: ga4-int_attribution-date-time_create
@@ -53,12 +53,12 @@ Configuration
 * Connections
   * Allow internal traffic only
 
-Code
+__Code__
 * Runtime: Node.js (latest version)
 * Source code: Inline Editor
 * Entry point: makeDateTime
   
-index.js
+__index.js__
 
 ```
 const Firestore = require('@google-cloud/firestore');
