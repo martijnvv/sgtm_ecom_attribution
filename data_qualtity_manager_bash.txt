@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set variables (Update these before running)
-PROJECT_ID="kruidvat-nl"
-SERVICE_ACCOUNT_NAME="kruidvat-183207"  # Without @PROJECT_ID.iam.gserviceaccount.com
+PROJECT_ID="XXX"
+SERVICE_ACCOUNT_NAME="XXX"  # Without @PROJECT_ID.iam.gserviceaccount.com
 
 # Construct full service account email
 SERVICE_ACCOUNT="${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
